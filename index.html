@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuestro Mundo 💕</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="corazones"></div>
+
+<section class="hero">
+    <h1>Para la persona más especial 💖</h1>
+
+    <img src="img/foto1.jpg" class="imagen-hero">
+
+    <p>Hemos estado juntos durante:</p>
+
+    <h2 id="contador"></h2>
+    <button onclick="mostrar()">Descubre lo que siento ❤️</button>
+</section>
+
+<section id="contenido" class="contenido">
+    <h2>Nuestros Recuerdos 📸</h2>
+
+    <div class="galeria">
+        <img src="img/foto9.jpg" class="foto">
+        <img src="img/foto3.jpg" class="foto">
+        <img src="img/foto4.jpg" class="foto">
+        <img src="img/foto5.jpg" class="foto">
+        <img src="img/foto6.jpg" class="foto">
+        <img src="img/foto7.jpg" class="foto">
+        <img src="img/foto8.jpg" class="foto">
+        <img src="img/foto2.jpg" class="foto">
+        <img src="img/foto10.jpg" class="foto">
+        <img src="img/foto11.jpg" class="foto">
+    
+    </div>
+
+    <p class="mensaje">
+    Gracias por ser mi apoyo, mi alegría y mi persona favorita.
+    Te amo más de lo que las palabras pueden explicar, quiero
+    que sepas lo importante que eres para mi aunque no estes 
+    cerca de mi pero eso nunca va impedir que te ame de esta
+    manera tan lindo. Este detalle lo hice especialmente para
+    ti mi amor mio 💕
+    </p>
+</section>
+
+<script>
+
+// CONTADOR DE DÍAS
+const fechaInicio = new Date("2025-12-31"); // CAMBIA ESTA FECHA
+const hoy = new Date();
+
+const diferencia = hoy - fechaInicio;
+const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+
+document.getElementById("contador").innerText = dias + " días juntos ❤️";
+
+function mostrar(){
+    document.getElementById("contenido").style.display = "block";
+    
+    const musica = document.getElementById("musica");
+    musica.volume = 0.2; // volumen bajito romántico
+    musica.play();
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}
+
+
+// CORAZONES FLOTANDO
+function crearCorazon(){
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 6000);
+}
+
+setInterval(crearCorazon, 500);
+
+</script>
+
+<audio id="musica" loop>
+    <source src="audio/audio.mp3" type="audio/mpeg">
+</audio>
+
+
+</body>
+</html>
+
